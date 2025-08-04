@@ -1,0 +1,12 @@
+/build/
+/war_build/
+*.war
+*.class
+/.classpath
+/.project
+/.settings/
+/webapps/
+*.log
+.DS_Store
+node_modules/
+.env
