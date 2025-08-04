@@ -16,7 +16,8 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // Retrieve username and password from the login form
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -25,9 +26,8 @@ public class LoginServlet extends HttpServlet {
             MongoDatabase db = DBConnection.getDatabase();
             MongoCollection<Document> users = db.getCollection("users");
             Document userDoc = users.find(Filters.and(
-                Filters.eq("username", username),
-                Filters.eq("password", password)
-            )).first();
+                    Filters.eq("username", username),
+                    Filters.eq("password", password))).first();
 
             if (userDoc != null) {
                 // User authenticated successfully
